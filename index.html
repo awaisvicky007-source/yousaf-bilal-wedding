@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Wedding Invitation: Yousaf & Momina</title>
+    <meta name="title" content="Wedding Invitation: Yousaf & Momina">
+    <meta name="description" content="We cordially invite you to join us at the Walima Ceremony of M. Yousaf Bilal and Momina Asif on Jan 30, 2026.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-project-name.netlify.app/">
+    <meta property="og:title" content="Wedding Invitation: Yousaf & Momina">
+    <meta property="og:description" content="Click to view the invitation and location details.">
+    <meta property="og:image" content="https://your-project-name.netlify.app/preview.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #00251a; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 10px;
+        }
+
+        /* --- LOGO ANIMATION INSIDE CARD --- */
+        .logo-wrap {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .main-logo {
+            width: 130px;
+            height: auto;
+            border-radius: 50%;
+            border: 2px solid #D4AF37;
+            padding: 5px;
+            background: rgba(255,255,255,0.1);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #D4AF37); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 15px #D4AF37); }
+        }
+
+        /* --- PREMIUM RUNNING ANIMATIONS --- */
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes goldShimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .premium-shimmer {
+            background: linear-gradient(90deg, #D4AF37, #FFF5D1, #D4AF37, #FFF5D1, #D4AF37);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldShimmer 4s linear infinite;
+            font-weight: 700;
+        }
+
+        /* --- FALLING ANIMATION --- */
+        #confetti-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 999;
+        }
+        .gold-leaf {
+            position: absolute; width: 8px; height: 8px;
+            background: linear-gradient(45deg, #D4AF37, #f2cb82);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- BORDER ALIGNMENT --- */
+        .border-layer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000; padding: 10px;
+        }
+        .corner {
+            position: absolute; width: 80px; height: 80px;
+            border: 3px solid #D4AF37;
+        }
+        .tl { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+        .tr { top: 15px; right: 15px; border-left: none; border-bottom: none; }
+        .bl { bottom: 15px; left: 15px; border-right: none; border-top: none; }
+        .br { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+        /* --- CARD STYLING --- */
+        .wedding-card {
+            max-width: 750px;
+            margin: 40px auto;
+            background: #fffdfa;
+            border-radius: 25px;
+            position: relative;
+            z-index: 5;
+            animation: cardFloat 5s ease-in-out infinite;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #004d40 0%, #002e26 100%);
+            padding: 50px 20px;
+            text-align: center;
+            color: white;
+            border-bottom: 4px solid #D4AF37;
+        }
+        .couple-names {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(45px, 12vw, 75px);
+            color: #D4AF37;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .countdown-box {
+            display: flex; justify-content: center; gap: 10px; margin: 30px 0;
+        }
+        .unit {
+            background: #004d40; color: #D4AF37;
+            padding: 10px; border-radius: 12px; min-width: 75px;
+            border: 1px solid #D4AF37; text-align: center;
+        }
+
+        .map-box {
+            border: 2px solid #D4AF37; border-radius: 15px;
+            overflow: hidden; margin: 20px 0;
+        }
+
+        .audio-btn {
+            position: fixed; bottom: 25px; right: 25px; z-index: 1001;
+            background: #D4AF37; color: #00251a; border: none;
+            padding: 12px 25px; border-radius: 50px; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 500px) {
+            .corner { width: 50px; height: 50px; }
+            .wedding-card { margin: 20px auto; }
+            .main-logo { width: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="border-layer">
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+</div>
+
+<div id="confetti-container"></div>
+
+<button id="musicBtn" class="audio-btn">🎵 Play Music</button>
+<audio id="track" loop preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+    <div class="wedding-card">
+        <div class="header-bg">
+            <h5 class="premium-shimmer">In The Name of Allah, The Most Beneficent, The Most Merciful</h5>
+            
+            <div class="logo-wrap">
+                <img src="preview.jpg" alt="Logo" class="main-logo">
+            </div>
+
+            <h2 class="mt-2" style="font-family: 'Playfair Display'">Mr. & Mrs. Sheikh M. Bilal</h2>
+            <p class="text-white-50 mt-2">Request the honor of your presence at the Walima Ceremony of their beloved Son</p>
+            <div class="couple-names">
+                M. Yousaf Bilal <br>
+                <span style="font-size: 24px; color: white; font-family: 'Playfair Display'">Weds</span> <br>
+                Momina Asif
+            </div>
+        </div>
+
+        <div class="p-4 text-center">
+            <div class="countdown-box">
+                <div class="unit"><span id="d" class="d-block h4 mb-0">--</span>Days</div>
+                <div class="unit"><span id="h" class="d-block h4 mb-0">--</span>Hrs</div>
+                <div class="unit"><span id="m" class="d-block h4 mb-0">--</span>Min</div>
+                <div class="unit"><span id="s" class="d-block h4 mb-0">--</span>Sec</div>
+            </div>
+
+            <h3 style="color: #004d40; font-family: 'Playfair Display';">Walima Ceremony</h3>
+            <p class="fs-5 fw-bold mb-0">Friday, 30th January 2026</p>
+            <p class="text-muted">Dinner: 07:00 PM to 09:00 PM</p>
+
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3434.7828238615175!2d72.3618!3d30.5891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922f77e8fde0f25%3A0x729ca00f72504492!2sMughal-e-Azam%20Events%20Hall!5e0!3m2!1sen!2s!4v1700000000000" 
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <a href="https://maps.google.com/?q=Mughal-e-Azam+Events+Hall+Mian+Channu" target="_blank" class="btn btn-dark w-100 rounded-pill">📍 View Location on Maps</a>
+
+            <div class="row mt-5">
+                <div class="col-12"><h5 class="premium-shimmer">R.S.V.P</h5></div>
+                <div class="col-6"><strong>M. Ahsan Bilal</strong><br>0300-6336125</div>
+                <div class="col-6"><strong>M. Abdullah Bilal</strong><br>0303-0513870</div>
+            </div>
+
+            <div class="mt-5 pt-3 border-top">
+                <p class="small text-muted mb-0">LOOKING FORWARD</p>
+                <p class="fw-bold" style="color: #004d40;">Sheikh Lal Muhammad Family &<br>Khuwaja Salamat Ali Family</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function createLeaf() {
+        const container = document.getElementById('confetti-container');
+        const leaf = document.createElement('div');
+        leaf.className = 'gold-leaf';
+        leaf.style.left = Math.random() * 100 + 'vw';
+        leaf.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        leaf.style.width = leaf.style.height = (Math.random() * 6 + 4) + 'px';
+        container.appendChild(leaf);
+        setTimeout(() => leaf.remove(), 7000);
+    }
+    setInterval(createLeaf, 200);
+
+    const music = document.getElementById('track');
+    const btn = document.getElementById('musicBtn');
+    music.playbackRate = 0.8; 
+
+    btn.onclick = () => {
+        if (music.paused) { music.play(); btn.innerText = "🔇 Pause"; }
+        else { music.pause(); btn.innerText = "🎵 Play Music"; }
+    };
+
+    const targetDate = new Date('January 30, 2026 19:00:00').getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const d = targetDate - now;
+        document.getElementById('d').innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+        document.getElementById('h').innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('m').innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('s').innerText = Math.floor((d % (1000 * 60)) / 1000);
+    }, 1000);
+</script>
+
+</body>
+</html>
